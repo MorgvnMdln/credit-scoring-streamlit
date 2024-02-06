@@ -1,1 +1,1 @@
-web: streamlit run templates/index.html
+web: streamlit run streamlit_app.py
