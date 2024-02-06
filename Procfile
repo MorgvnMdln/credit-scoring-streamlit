@@ -1,1 +1,1 @@
-web: streamlit run templates/dashboard_form.py
+web: streamlit run templates/index.html
