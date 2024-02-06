@@ -13,17 +13,17 @@ import seaborn as sns
 import csv
 import io, base64
 from PIL import Image
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from sklearn.preprocessing import MinMaxScaler
 from lightgbm import LGBMClassifier
 
 
-load_dotenv()
-streamlit_url = os.environ.get('streamlit_url')
+# load_dotenv()
+# streamlit_url = os.environ.get('streamlit_url')
 
 def main():
-    st.title('Hello, Streamlit!')
-    st.write('This is a basic Streamlit application.')
+    st.title('Streamlit Dashboard')
+    st.write('Welcome to my Streamlit Dashboard!')
 
 if __name__ == "__main__":
     main()
