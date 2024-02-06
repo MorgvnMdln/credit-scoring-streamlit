@@ -19,6 +19,7 @@ from lightgbm import LGBMClassifier
 
 
 load_dotenv()
+streamlit_url = os.environ.get('streamlit_url')
 
 def main():
     st.title('Hello, Streamlit!')
