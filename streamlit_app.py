@@ -13,12 +13,12 @@ import seaborn as sns
 import csv
 import io, base64
 from PIL import Image
-# from dotenv import load_dotenv
 from sklearn.preprocessing import MinMaxScaler
 from lightgbm import LGBMClassifier
+from dotenv import load_dotenv
 
 
-# load_dotenv()
+load_dotenv()
 # streamlit_url = os.environ.get('streamlit_url')
 
 def main():
