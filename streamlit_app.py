@@ -77,7 +77,7 @@ def main():
                                 
                     # app.py
                     # URL = "https://credit-scoring-streamlit-194aaf4426c2.herokuapp.com/api/predict"
-                    URL = os.path.join(streamlit_url, "predict")
+                    URL = os.path.join(flask_url, "predict")
 
                     # Définition d'un dictionnaire de paramètres pour les paramètres à envoyer à l'API
                     PARAMS = {
@@ -204,7 +204,7 @@ def main():
                         
         with tab2: # onglet performance du model
             # URL = "http://credit-scoring-app-mdln.herokuapp.com/api/model_performance"
-            URL = os.path.join(streamlit_url, "model_performance")
+            URL = os.path.join(flask_url, "model_performance")
             
 
             st.header("Performance globale")
@@ -231,7 +231,7 @@ def main():
         # ----------------------------------------------------
                 
         with tab3:  # onglet comparaison avec les autres clients
-            URL = os.path.join(streamlit_url, "client_comparison")
+            URL = os.path.join(flask_url, "client_comparison")
             st.header("Tendances clients")
             r = requests.get(url=URL)
             # extracting data in json format
