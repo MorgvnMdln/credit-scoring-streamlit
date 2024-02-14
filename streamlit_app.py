@@ -18,30 +18,9 @@ from lightgbm import LGBMClassifier
 from dotenv import load_dotenv
 
 
-load_dotenv()
-# streamlit_url = os.environ.get('streamlit_url')
-
-def main():
-    st.title('Streamlit Dashboard')
-    st.write('Welcome to my Streamlit Dashboard!')
-
-if __name__ == "__main__":
-    main()
-
-
-
-
-
-
-
-
-
-
-
-
-'''
 # ----------------------------------------------------
 # Définition des fonctions
+# ----------------------------------------------------
 
 def get_days(date_value):
     today = date.today()
@@ -54,14 +33,16 @@ def get_age(date_value):
     delta = today - date_value
     return delta.days / 365
 
+
 # ----------------------------------------------------
-# Chargement des variables environnementales
+# Variables environnementales [Heroku path]
+# ----------------------------------------------------
 
-# Localhost, load the .env file 
-load_dotenv()  # 'http://127.0.0.1:5000/api/'
+load_dotenv()  # 'http://127.0.0.1:5000/api/'  # Localhost, load the .env file and get the variables
 
-# Heroku path
-urlPath = os.environ.get('urlPath')  # 'http://credit-scoring-app-mdln.herokuapp.com/api/'  
+streamlit_url = os.environ.get('streamlit_url')  # https://credit-scoring-streamlit-194aaf4426c2.herokuapp.com/
+
+flask_url = os.environ.get('flask_url')  # https://credit-scoring-flask-109d0cbc468c.herokuapp.com/
     
 
 # ----------------------------------------------------
@@ -74,6 +55,11 @@ def main():
     st.title("Simulateur de Prêt")
 
     tab1, tab2, tab3 = st.tabs(["Informations Client", "Performance Globale", "Tendances clients"])
+
+    # ----------------------------------------------------
+    # Onglet 1
+    # ----------------------------------------------------
+
     with tab1:  # ID client + resultats après réponse de l'API
         
         # Création d'un formulaire
@@ -90,8 +76,8 @@ def main():
                 if submit:
                                 
                     # app.py
-                    # URL = "https://credit-scoring-app-mdln.herokuapp.com/api/predict"
-                    URL = os.path.join(urlPath, "predict")
+                    # URL = "https://credit-scoring-streamlit-194aaf4426c2.herokuapp.com/api/predict"
+                    URL = os.path.join(streamlit_url, "predict")
 
                     # Définition d'un dictionnaire de paramètres pour les paramètres à envoyer à l'API
                     PARAMS = {
@@ -164,6 +150,7 @@ def main():
 
                     # ----------------------------------------------------
                     # Affichage des résultats de la requête API
+                    # ----------------------------------------------------
                         
                     if submit:                  
 
@@ -213,10 +200,11 @@ def main():
 
         # ----------------------------------------------------
         # Onglet 2
-                
+        # ----------------------------------------------------
+                        
         with tab2: # onglet performance du model
             # URL = "http://credit-scoring-app-mdln.herokuapp.com/api/model_performance"
-            URL = os.path.join(urlPath, "model_performance")
+            URL = os.path.join(streamlit_url, "model_performance")
             
 
             st.header("Performance globale")
@@ -240,9 +228,10 @@ def main():
 
         # ----------------------------------------------------
         # Onglet 3
+        # ----------------------------------------------------
                 
         with tab3:  # onglet comparaison avec les autres clients
-            URL = os.path.join(urlPath, "client_comparison")
+            URL = os.path.join(streamlit_url, "client_comparison")
             st.header("Tendances clients")
             r = requests.get(url=URL)
             # extracting data in json format
@@ -291,5 +280,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-'''
